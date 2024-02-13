@@ -1,0 +1,17 @@
+    <h2>Step 1: Choose your model and color</h2>
+    <br/>
+
+    <label for="modelSelect">Model</label>
+    <select id="modelSelect" (change)="onModelChange()" [(ngModel)]="selectedModel">
+      <option value="">Choose...</option>
+      <option *ngFor="let model of modelsData" [value]="model.code">{{ model.description }}</option>
+    </select>
+
+    <br/><br/>
+    <ng-container *ngIf="selectedModel">
+      <label for="colorSelect">Color</label>
+      <select id="colorSelect" (change)="onColorChange()" [(ngModel)]="selectedColor">
+         <option *ngFor="let color of colors" [value]="color.code">{{ color.description }}</option>
+      </select>
+    </ng-container>
+  

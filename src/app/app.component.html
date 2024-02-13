@@ -1,0 +1,20 @@
+  <div class="tab text-center">
+    <button id="step1" class="tablinks" [class.active]="activeStep == 'Step1'" (click)="openStep('step1')">Step 1</button>
+    <button id="step2" class="tablinks" [class.active]="activeStep == 'Step2'" (click)="openStep('step2')" [disabled]="!sharedDataService.step1Completed">Step 2</button>
+    <button id="step3" class="tablinks" [class.active]="activeStep == 'Step3'" (click)="openStep('step3')" [disabled]="!sharedDataService.step2Completed">Step 3</button>
+  </div>
+
+  <div class="row">
+    <div class="column-50" >
+      <router-outlet></router-outlet>
+    </div>
+    <div class="column-50">
+      <ng-container *ngIf="sharedDataService.getSelectedModel() && sharedDataService.getSelectedColor()">
+        <img [src]="'https://interstate21.com/tesla-app/images/' + sharedDataService.getSelectedModel() + '/' + sharedDataService.getSelectedColor() + '.jpg'">
+      </ng-container>
+    </div>
+</div>
+
+
+
+
